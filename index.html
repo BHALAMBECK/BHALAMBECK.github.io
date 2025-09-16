@@ -10,12 +10,8 @@
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
   <style>
-    :root{
-      --bg:#0b0d10; --card:#11151a; --text:#e8eef3; --muted:#a7b3be; --brand:#c04a00; --accent:#f4a261; --border:#1e242b;
-    }
-    :root.light{
-      --bg:#f6f8fb; --card:#ffffff; --text:#0b0d10; --muted:#4b5563; --brand:#8b1f00; --accent:#f59e0b; --border:#e5e7eb;
-    }
+    :root{ --bg:#0b0d10; --card:#11151a; --text:#e8eef3; --muted:#a7b3be; --brand:#c04a00; --accent:#f4a261; --border:#1e242b; }
+    :root.light{ --bg:#f6f8fb; --card:#ffffff; --text:#0b0d10; --muted:#4b5563; --brand:#8b1f00; --accent:#f59e0b; --border:#e5e7eb; }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--text);font:500 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial}
@@ -37,17 +33,24 @@
     .pill{display:inline-block;background:rgba(244,162,97,.15);color:var(--accent);padding:.25rem .6rem;border-radius:999px;font-size:.85rem;margin-bottom:10px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px}
     .avatar{aspect-ratio:1/1;border-radius:18px;border:1px solid var(--border);background:radial-gradient(40% 35% at 30% 30%,#fff2 0%,#0000 60%),linear-gradient(145deg,#1c2430,#0b0d10);display:grid;place-items:center;font-size:56px}
+    .avatar.photo{background:none;padding:0}
+    .avatar.photo img{width:100%;height:100%;object-fit:cover;border-radius:18px;border:1px solid var(--border);display:block}
     section{padding:28px 0}
     h2{font-size:clamp(22px,3vw,28px);margin:0 0 16px}
     .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
     .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.45rem .7rem;font-size:.9rem}
     .project .title{font-weight:700}
     .project .meta{color:var(--muted);font-size:.9rem}
-    .avatar.photo { background:none; padding:0; }
-    .avatar.photo img { width:100%; height:100%; object-fit:cover; border-radius:18px; border:1px solid var(--border); display:block; }
+    .project figure{margin:0 0 .75rem 0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:linear-gradient(145deg,#1c2430,#0b0d10);height:160px;display:grid;place-items:center}
+    .project img{width:100%;height:100%;object-fit:cover;display:block}
+    .placeholder{font-size:.95rem;color:var(--muted)}
+    details{border-top:1px dashed var(--border);margin-top:.6rem;padding-top:.6rem}
+    details > summary{cursor:pointer;list-style:none}
+    details > summary::-webkit-details-marker{display:none}
+    .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:.6rem}
     .timeline{display:grid;gap:12px}
     .item{display:grid;gap:6px}
     .item .when{font-size:.9rem;color:var(--muted)}
@@ -86,8 +89,8 @@
     <section class="hero">
       <div class="copy fade">
         <span class="pill">Aerospace • Analytics • Optimization</span>
-        <h1>Hi, I’m <strong>Ben Halambeck</strong> — I build flight‑tested experiments, optimization tools, and clean data stories.</h1>
-        <p>Senior in Aerospace &amp; Ocean Engineering at Virginia Tech and MSBA‑BA. Currently diving into structural dynamics, FEM automation, and ML for engineering workflows.</p>
+        <h1>Hi, I’m <strong>Ben Halambeck</strong> — I build flight-tested experiments, optimization tools, and clean data stories.</h1>
+        <p>Senior in Aerospace &amp; Ocean Engineering at Virginia Tech and MSBA-BA. Currently diving into structural dynamics, FEM automation, and ML for engineering workflows.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn primary" href="#projects">See Projects</a>
           <a class="btn" href="#contact">Get in touch</a>
@@ -97,14 +100,14 @@
         <div class="avatar photo">
           <img src="images/ben.jpg" alt="Ben Halambeck headshot">
         </div>
-
+      </div>
     </section>
 
     <section id="about">
       <h2>About</h2>
       <div class="grid cols-2">
         <div class="card">
-          <p>Engineer with a bias for building. I’ve led a supersonic flow‑control experiment (Mach&nbsp;1.75), created FEMAP API tooling, and shipped optimization frameworks for drone design. I like problems that blend physics, data, and product thinking.</p>
+          <p>Engineer with a bias for building. I’ve led a supersonic flow-control experiment (Mach&nbsp;1.75), created FEMAP API tooling, and shipped optimization frameworks for drone design. I like problems that blend physics, data, and product thinking.</p>
         </div>
         <div class="card">
           <div class="skills" id="skills"></div>
@@ -127,8 +130,8 @@
       <div class="card">
         <p>Want to collaborate or chat about aerospace + analytics? Shoot me an email or connect on LinkedIn.</p>
         <p>
-          📧 <a id="emailLink" href="mailto:ben@example.com">benjhalambeck@gmail.com</a><br/>
-          💼 <a href="#" id="linkedinLink">LinkedIn</a>
+          📧 <a id="emailLink" href="mailto:benjhalambeck@gmail.com">benjhalambeck@gmail.com</a><br/>
+          💼 <a href="https://linkedin.com/in/benjaminhalambeck" id="linkedinLink">LinkedIn</a>
         </p>
         <p class="muted" style="color:var(--muted)">Tip: replace the links above in <code>siteData</code> below.</p>
       </div>
@@ -140,34 +143,61 @@
   </footer>
 
   <script>
-    // ---- Data you can edit quickly ----
+    // ---------- Editable data ----------
     const siteData = {
       resumeUrl: "#", // e.g., 'resume/Ben_Halambeck_Resume.pdf'
       email: "benjhalambeck@gmail.com",
       linkedin: "https://linkedin.com/in/benjaminhalambeck",
-      source: "https://github.com/your-handle/portfolio",
+      source: "https://github.com/BHALAMBECK/BHALAMBECK.github.io",
       skills: [
-        "Aerospace Design", "Structural Dynamics", "FEMAP API", "MATLAB", "Python",
-        "OpenVSP", "ANSYS/Abaqus", "Optimization", "Data Viz", "Leadership"
+        "Aerospace Design","Structural Dynamics","FEMAP API","MATLAB","Python",
+        "OpenVSP","ANSYS/Abaqus","Optimization","Data Viz","Leadership"
       ],
       projects: [
         {
-          title: "Supersonic Discrete‑Normal Injection",
-          blurb: "Wind‑tunnel experiment at Mach 1.75 with BOS imaging; measured lift/drag effects of jet injection.",
-          link: "#",
-          tags: ["Aero", "Experiment", "BOS"]
+          title: "Supersonic Discrete-Normal Injection",
+          img: "images/projects/supersonic.jpg",    // ← add your image here
+          alt: "BOS schlieren setup and supersonic airfoil rig",
+          tags: ["Aero","Experiment","BOS"],
+          blurb: "Wind-tunnel experiment at Mach 1.75 with BOS imaging; measured lift/drag response to discrete normal jet injection.",
+          details: [
+            "Led design/fab of a 3D-printed airfoil, aluminum bracket, and steel base; integrated force sensors for normal/axial loads.",
+            "Authored SOP and safety protocol; managed budget and procurement; coordinated faculty reviews and test sessions.",
+            "Implemented BOS imaging and data processing; compared compressed-air on/off cases to quantify ∆CL and drag penalties.",
+            "Troubleshot live test issues (leaks, alignment, sensor drift) and iterated fixture stiffness to reduce noise."
+          ],
+          tech: ["APPL wind tunnel","BOS imaging","Arduino DAQ","MATLAB","Data cleaning"],
+          links: { demo: "#", repo: "#", paper: "#" }
         },
         {
           title: "FEMAP API Assistant",
-          blurb: "Code‑gen assistant + scripts to speed meshing, sets, and post‑processing via Femap OLE API.",
-          link: "#",
-          tags: ["Automation", "VB", "Python"]
+          img: "images/projects/femap-api.jpg",     // ← add your image here
+          alt: "FEMAP scripting and automation",
+          tags: ["Automation","VB","Python"],
+          blurb: "Code-gen + utilities that speed meshing, set creation, and post-processing over the FEMAP OLE API.",
+          details: [
+            "Built prompt-driven code generation with guardrails; emits VB/VBA snippets for element sets, meshing rules, and reporting.",
+            "Added helpers for set rules (elem by type, property, group), model cleanup, and common post-processing plots.",
+            "Designed repo structure, docs, and examples; integrated with version control and lightweight test harnesses.",
+            "Goal: reduce repetitive manual operations and standardize best-practice templates across analyses."
+          ],
+          tech: ["FEMAP OLE","VB/VBA","Python 3.11","VS Code","Git"],
+          links: { demo: "#", repo: "#", docs: "#" }
         },
         {
-          title: "Pizza‑Drone Optimization",
-          blurb: "Multi‑objective trade study (mass vs noise vs range) with MATLAB grid search + constraints.",
-          link: "#",
-          tags: ["Optimization", "UAV"]
+          title: "Pizza-Drone Optimization",
+          img: "images/projects/pizza-drone.jpg",   // ← add your image here
+          alt: "UAV concept optimization plots",
+          tags: ["Optimization","UAV"],
+          blurb: "Multi-objective study balancing mass, noise, and range for a delivery mission with FAA constraints.",
+          details: [
+            "Created MATLAB grid search with constraints (weight, energy, prop interplay) and checked feasible region.",
+            "Modeled battery capacity, rotor diameter/count, and tilt; visualized objective heatmaps and frontier trade-offs.",
+            "Implemented noise model (dB conversion) and scenario sweeps to evaluate sensitivity to payload and weather.",
+            "Delivered concise plots and recommendations for an achievable design envelope and follow-on testing."
+          ],
+          tech: ["MATLAB","Trade studies","Multi-objective","Data viz"],
+          links: { report: "#", code: "#" }
         }
       ],
       experience: [
@@ -177,7 +207,7 @@
       ]
     };
 
-    // ---- Theme toggle (persisted) ----
+    // ---------- Theme toggle (persisted) ----------
     const root = document.documentElement;
     const saved = localStorage.getItem('theme');
     if(saved === 'light') root.classList.add('light');
@@ -186,7 +216,7 @@
       localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
     });
 
-    // ---- Populate UI from siteData ----
+    // ---------- Populate skills ----------
     const skillsWrap = document.getElementById('skills');
     siteData.skills.forEach(s=>{
       const span=document.createElement('span');
@@ -195,19 +225,75 @@
       skillsWrap.appendChild(span);
     });
 
+    // ---------- Project cards ----------
     const grid = document.getElementById('projectGrid');
+
+    function makeLinkButton(href,label){
+      const a=document.createElement('a');
+      a.className='btn';
+      a.href=href||'#';
+      a.textContent=label;
+      if(!href || href==='#'){ a.setAttribute('aria-disabled','true'); a.style.opacity=.7; }
+      return a;
+    }
+
     siteData.projects.forEach(p=>{
       const card=document.createElement('article');
       card.className='card project';
-      card.innerHTML = `
-        <div class="title">${p.title}</div>
-        <div class="meta">${p.tags.join(' • ')}</div>
-        <p style="margin:.5rem 0 1rem">${p.blurb}</p>
-        <a class="btn" href="${p.link}">Details →</a>
-      `;
+
+      // Image / placeholder
+      let figure = document.createElement('figure');
+      if(p.img){
+        const img=document.createElement('img');
+        img.src=p.img;
+        img.alt=p.alt || (p.title + " image");
+        figure.appendChild(img);
+      }else{
+        const div=document.createElement('div');
+        div.className='placeholder';
+        div.innerHTML = "Add an image at <code>" + (p.img || "images/projects/your-image.jpg") + "</code>";
+        figure.appendChild(div);
+      }
+
+      // Content
+      const title = `<div class="title">${p.title}</div>`;
+      const meta = `<div class="meta">${(p.tags||[]).join(' • ')}</div>`;
+      const blurb = `<p style="margin:.5rem 0 1rem">${p.blurb||""}</p>`;
+
+      // Details (expandable)
+      let detHtml = "";
+      if(p.details && p.details.length){
+        detHtml += `<details><summary>Read more</summary><ul style="margin:.6rem 0 0 1rem;padding:0">`;
+        p.details.forEach(d => detHtml += `<li style="margin:.3rem 0">${d}</li>`);
+        detHtml += `</ul>`;
+        if(p.tech && p.tech.length){
+          detHtml += `<p style="margin:.6rem 0 0"><span class="meta">Tech:</span> ${p.tech.join(" • ")}</p>`;
+        }
+        detHtml += `</details>`;
+      }
+
+      // Links
+      const linksWrap = document.createElement('div');
+      linksWrap.className='links';
+      if(p.links){
+        if(p.links.demo) linksWrap.appendChild(makeLinkButton(p.links.demo,"Demo →"));
+        if(p.links.repo) linksWrap.appendChild(makeLinkButton(p.links.repo,"Repo →"));
+        if(p.links.docs) linksWrap.appendChild(makeLinkButton(p.links.docs,"Docs →"));
+        if(p.links.paper) linksWrap.appendChild(makeLinkButton(p.links.paper,"Paper →"));
+        if(p.links.report) linksWrap.appendChild(makeLinkButton(p.links.report,"Report →"));
+        if(p.links.code) linksWrap.appendChild(makeLinkButton(p.links.code,"Code →"));
+      }
+
+      card.appendChild(figure);
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = title + meta + blurb + detHtml;
+      card.appendChild(wrapper);
+      if(linksWrap.children.length) card.appendChild(linksWrap);
+
       grid.appendChild(card);
     });
 
+    // ---------- Experience ----------
     const xp = document.getElementById('xp');
     siteData.experience.forEach(e=>{
       const div=document.createElement('div');
@@ -216,14 +302,13 @@
       xp.appendChild(div);
     });
 
-    // Links
+    // ---------- Links / footer ----------
     const r = document.getElementById('resumeLink');
     if(siteData.resumeUrl && siteData.resumeUrl !== '#') r.href = siteData.resumeUrl; else r.setAttribute('aria-disabled','true');
     document.getElementById('emailLink').href = `mailto:${siteData.email}`;
     document.getElementById('emailLink').textContent = siteData.email;
     document.getElementById('linkedinLink').href = siteData.linkedin;
     document.getElementById('sourceLink').href = siteData.source;
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Smooth scroll (respecting reduced motion)
@@ -235,7 +320,7 @@
         e.preventDefault();
         el.scrollIntoView({behavior: prefersReduced? 'auto':'smooth'});
       })
-    })
+    });
   </script>
 </body>
 </html>
