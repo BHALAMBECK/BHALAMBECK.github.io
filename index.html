@@ -46,6 +46,8 @@
     .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.45rem .7rem;font-size:.9rem}
     .project .title{font-weight:700}
     .project .meta{color:var(--muted);font-size:.9rem}
+    .avatar.photo { background:none; padding:0; }
+    .avatar.photo img { width:100%; height:100%; object-fit:cover; border-radius:18px; border:1px solid var(--border); display:block; }
     .timeline{display:grid;gap:12px}
     .item{display:grid;gap:6px}
     .item .when{font-size:.9rem;color:var(--muted)}
@@ -92,8 +94,10 @@
         </div>
       </div>
       <div class="card fade" aria-hidden="true">
-        <div class="avatar" role="img" aria-label="Avatar placeholder">🛩️</div>
-      </div>
+        <div class="avatar photo">
+          <img src="images/ben.jpg" alt="Ben Halambeck headshot">
+        </div>
+
     </section>
 
     <section id="about">
