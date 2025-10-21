@@ -9,6 +9,13 @@
   <meta property="og:description" content="Aerospace, analytics, and optimization projects." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:url" content="https://bhalambeck.github.io/" />
+  <meta property="og:image" content="https://bhalambeck.github.io/images/ben.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ben Halambeck — Portfolio" />
+  <meta name="twitter:description" content="Aerospace, analytics, and optimization projects." />
+  <meta name="twitter:image" content="https://bhalambeck.github.io/images/ben.jpeg" />
   <style>
     :root{ --bg:#0b0d10; --card:#11151a; --text:#e8eef3; --muted:#a7b3be; --brand:#c04a00; --accent:#f4a261; --border:#1e242b; }
     :root.light{ --bg:#f6f8fb; --card:#ffffff; --text:#0b0d10; --muted:#4b5563; --brand:#8b1f00; --accent:#f59e0b; --border:#e5e7eb; }
@@ -42,6 +49,8 @@
     .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.45rem .7rem;font-size:.9rem}
+    .skill-category{margin-bottom:1.25rem}
+    .skill-category h3{font-size:1rem;margin:0 0 .5rem;color:var(--accent);font-weight:600}
     .project .title{font-weight:700}
     .project .meta{color:var(--muted);font-size:.9rem}
     .project figure{margin:0 0 .75rem 0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:linear-gradient(145deg,#1c2430,#0b0d10);height:160px;display:grid;place-items:center}
@@ -51,8 +60,10 @@
     details > summary{cursor:pointer;list-style:none}
     details > summary::-webkit-details-marker{display:none}
     .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:.6rem}
-    .timeline{display:grid;gap:12px}
-    .item{display:grid;gap:6px}
+    .timeline{display:grid;gap:12px;position:relative;padding-left:24px}
+    .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--accent),transparent);border-radius:2px}
+    .item{display:grid;gap:6px;position:relative}
+    .item::before{content:'';position:absolute;left:-29px;top:8px;width:10px;height:10px;background:var(--accent);border-radius:50%;border:2px solid var(--bg)}
     .item .when{font-size:.9rem;color:var(--muted)}
     footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:.9rem}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -127,13 +138,26 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <div class="card">
-        <p>Want to collaborate or chat about aerospace + analytics? Shoot me an email or connect on LinkedIn.</p>
-        <p>
-          📧 <a id="emailLink" href="mailto:benjhalambeck@gmail.com">benjhalambeck@gmail.com</a><br/>
-          💼 <a href="https://linkedin.com/in/benjaminhalambeck" id="linkedinLink">LinkedIn</a>
-        </p>
-        <p class="muted" style="color:var(--muted)">Tip: replace the links above in <code>siteData</code> below.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3 style="margin-top:0;font-size:1.1rem">Get in Touch</h3>
+          <p>Want to collaborate or chat about aerospace + analytics? Send me a message or connect on LinkedIn.</p>
+          <p>
+            📧 <a id="emailLink" href="mailto:benjhalambeck@gmail.com">benjhalambeck@gmail.com</a><br/>
+            💼 <a href="https://linkedin.com/in/benjaminhalambeck" id="linkedinLink">LinkedIn</a><br/>
+            🐙 <a href="https://github.com/BHALAMBECK" target="_blank">GitHub</a>
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;font-size:1.1rem">Quick Message</h3>
+          <form id="contactForm" style="display:grid;gap:12px">
+            <input type="text" name="name" placeholder="Your Name" required style="padding:.7rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:inherit">
+            <input type="email" name="email" placeholder="Your Email" required style="padding:.7rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:inherit">
+            <textarea name="message" placeholder="Your Message" required rows="4" style="padding:.7rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:inherit;resize:vertical"></textarea>
+            <button type="submit" class="btn primary" style="cursor:pointer;border:none">Send Message →</button>
+            <p id="formStatus" style="margin:0;font-size:.9rem;color:var(--muted)"></p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
@@ -144,19 +168,22 @@
 
   <script>
     // ---------- Editable data ----------
+    // 📝 TO ADD YOUR RESUME: Save as "Ben_Halambeck_Resume.pdf" in the resume/ folder
     const siteData = {
-      resumeUrl: "#", // e.g., 'resume/Ben_Halambeck_Resume.pdf'
+      resumeUrl: "resume/Ben_Halambeck_Resume.pdf", // ✅ Will work once you add the PDF!
       email: "benjhalambeck@gmail.com",
       linkedin: "https://linkedin.com/in/benjaminhalambeck",
       source: "https://github.com/BHALAMBECK/BHALAMBECK.github.io",
-      skills: [
-        "Aerospace Design","Structural Dynamics","FEMAP API","MATLAB","Python",
-        "OpenVSP","ANSYS/Abaqus","Optimization","Data Viz","Leadership"
-      ],
+      // 📝 Skills organized by category for better presentation
+      skillCategories: {
+        "Aerospace & Engineering": ["Aerospace Design", "Structural Dynamics", "OpenVSP", "ANSYS/Abaqus", "Wind Tunnel Testing"],
+        "Programming & Tools": ["Python", "MATLAB", "FEMAP API", "VBA/VB", "Git"],
+        "Analytics & Optimization": ["Data Visualization", "Multi-Objective Optimization", "FEM Automation", "Machine Learning"]
+      },
       projects: [
         {
           title: "Supersonic Discrete-Normal Injection",
-          img: "images/projects/supersonic.jpg",    // ← add your image here
+          img: "images/projects/supersonic.png",    // 📝 Replace supersonic.svg with your .jpg image!
           alt: "BOS schlieren setup and supersonic airfoil rig",
           tags: ["Aero","Experiment","BOS"],
           blurb: "Wind-tunnel experiment at Mach 1.75 with BOS imaging; measured lift/drag response to discrete normal jet injection.",
@@ -171,7 +198,7 @@
         },
         {
           title: "FEMAP API Assistant",
-          img: "images/projects/femap-api.jpg",     // ← add your image here
+          img: "images/projects/femap-api.png",     // 📝 Replace femap-api.svg with your .jpg image!
           alt: "FEMAP scripting and automation",
           tags: ["Automation","VB","Python"],
           blurb: "Code-gen + utilities that speed meshing, set creation, and post-processing over the FEMAP OLE API.",
@@ -186,7 +213,7 @@
         },
         {
           title: "Pizza-Drone Optimization",
-          img: "images/projects/pizza-drone.jpg",   // ← add your image here
+          img: "images/projects/pizza-drone.jpg",   // 📝 Replace pizza-drone.svg with your .jpg image!
           alt: "UAV concept optimization plots",
           tags: ["Optimization","UAV"],
           blurb: "Multi-objective study balancing mass, noise, and range for a delivery mission with FAA constraints.",
@@ -216,13 +243,28 @@
       localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
     });
 
-    // ---------- Populate skills ----------
+    // ---------- Populate skills with categories ----------
     const skillsWrap = document.getElementById('skills');
-    siteData.skills.forEach(s=>{
-      const span=document.createElement('span');
-      span.className='chip';
-      span.textContent=s;
-      skillsWrap.appendChild(span);
+    Object.entries(siteData.skillCategories).forEach(([category, skills])=>{
+      const categoryDiv = document.createElement('div');
+      categoryDiv.className = 'skill-category';
+      
+      const heading = document.createElement('h3');
+      heading.textContent = category;
+      categoryDiv.appendChild(heading);
+      
+      const skillsContainer = document.createElement('div');
+      skillsContainer.className = 'skills';
+      
+      skills.forEach(s=>{
+        const span = document.createElement('span');
+        span.className = 'chip';
+        span.textContent = s;
+        skillsContainer.appendChild(span);
+      });
+      
+      categoryDiv.appendChild(skillsContainer);
+      skillsWrap.appendChild(categoryDiv);
     });
 
     // ---------- Project cards ----------
@@ -241,12 +283,21 @@
       const card=document.createElement('article');
       card.className='card project';
 
-      // Image / placeholder
+      // Image / placeholder with automatic fallback to SVG
       let figure = document.createElement('figure');
       if(p.img){
         const img=document.createElement('img');
         img.src=p.img;
         img.alt=p.alt || (p.title + " image");
+        
+        // Fallback to SVG placeholder if JPG doesn't exist
+        img.onerror = function() {
+          const svgPath = p.img.replace('.jpg', '.svg').replace('.png', '.svg');
+          if(this.src !== svgPath) {
+            this.src = svgPath;
+          }
+        };
+        
         figure.appendChild(img);
       }else{
         const div=document.createElement('div');
@@ -320,6 +371,58 @@
         e.preventDefault();
         el.scrollIntoView({behavior: prefersReduced? 'auto':'smooth'});
       })
+    });
+
+    // ---------- Contact form submission ----------
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+      
+      formStatus.textContent = 'Sending...';
+      formStatus.style.color = 'var(--accent)';
+      
+      try {
+        // Using Formspree (free service) - replace with your form endpoint
+        // Or send email directly using mailto fallback
+        const mailto = `mailto:${siteData.email}?subject=Portfolio Contact from ${encodeURIComponent(data.name)}&body=${encodeURIComponent(data.message + '\n\nFrom: ' + data.email)}`;
+        
+        // Option 1: Open email client (works immediately without setup)
+        window.location.href = mailto;
+        formStatus.textContent = '✓ Opening your email client...';
+        formStatus.style.color = 'var(--accent)';
+        
+        // Option 2: To use Formspree instead (requires signup at formspree.io):
+        // 1. Sign up at https://formspree.io/
+        // 2. Get your form endpoint
+        // 3. Replace the mailto above with:
+        // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(data)
+        // });
+        // if(response.ok) {
+        //   formStatus.textContent = '✓ Message sent successfully!';
+        //   contactForm.reset();
+        // }
+        
+        setTimeout(() => {
+          contactForm.reset();
+          formStatus.textContent = '';
+        }, 3000);
+        
+      } catch (error) {
+        formStatus.textContent = '✗ Error sending message. Please email directly.';
+        formStatus.style.color = '#ef4444';
+      }
     });
   </script>
 </body>
