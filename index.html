@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ben Halambeck — Portfolio</title>
-  <meta name="description" content="Portfolio of Ben Halambeck — aerospace & analytics projects, resume, and contact." />
-  <meta property="og:title" content="Ben Halambeck — Portfolio" />
+  <title>Ben Halambeck Portfolio</title>
+  <meta name="description" content="Portfolio of Ben Halambeck aerospace & analytics projects, resume, and contact." />
+  <meta property="og:title" content="Ben Halambeck Portfolio" />
   <meta property="og:description" content="Aerospace, analytics, and optimization projects." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
@@ -13,32 +13,37 @@
   <meta property="og:url" content="https://bhalambeck.github.io/" />
   <meta property="og:image" content="https://bhalambeck.github.io/images/ben.jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ben Halambeck — Portfolio" />
+  <meta name="twitter:title" content="Ben Halambeck Portfolio" />
   <meta name="twitter:description" content="Aerospace, analytics, and optimization projects." />
   <meta name="twitter:image" content="https://bhalambeck.github.io/images/ben.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root{ --bg:#0b0d10; --card:#11151a; --text:#e8eef3; --muted:#a7b3be; --brand:#c04a00; --accent:#f4a261; --border:#1e242b; }
     :root.light{ --bg:#f6f8fb; --card:#ffffff; --text:#0b0d10; --muted:#4b5563; --brand:#8b1f00; --accent:#f59e0b; --border:#e5e7eb; }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font:500 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial}
+    body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 'DM Sans', system-ui, sans-serif}
+    h1,h2,h3{font-weight:700}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1100px;margin:0 auto;padding:24px}
     header{position:sticky;top:0;background:linear-gradient(to bottom,var(--bg),rgba(0,0,0,0));backdrop-filter:saturate(120%) blur(6px);z-index:50}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
     .nav .left{display:flex;gap:14px;align-items:center}
-    .brand{font-weight:800;letter-spacing:.3px}
+    .brand{font-family:'JetBrains Mono', monospace;font-weight:700;letter-spacing:0}
     .nav a{color:var(--text);opacity:.9}
     .nav a:hover{opacity:1}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:var(--card);color:var(--text);padding:.6rem 1rem;border-radius:16px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:var(--card);color:var(--text);padding:.6rem 1rem;border-radius:16px;transition:all .15s ease}
     .btn.primary{background:var(--brand);border-color:transparent}
-    .btn:hover{filter:brightness(1.06)}
+    .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
     .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding:32px 0 12px}
     .hero h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:0 0 12px}
     .hero p{color:var(--muted);margin:0 0 16px}
     .pill{display:inline-block;background:rgba(244,162,97,.15);color:var(--accent);padding:.25rem .6rem;border-radius:999px;font-size:.85rem;margin-bottom:10px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.15)}
     .avatar{aspect-ratio:1/1;border-radius:18px;border:1px solid var(--border);background:radial-gradient(40% 35% at 30% 30%,#fff2 0%,#0000 60%),linear-gradient(145deg,#1c2430,#0b0d10);display:grid;place-items:center;font-size:56px}
     .avatar.photo{background:none;padding:0}
     .avatar.photo img{width:100%;height:100%;object-fit:cover;border-radius:18px;border:1px solid var(--border);display:block}
@@ -48,13 +53,14 @@
     .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
     .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.45rem .7rem;font-size:.9rem}
+    .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.45rem .7rem;font-size:.85rem;font-family:'JetBrains Mono', monospace}
     .skill-category{margin-bottom:1.25rem}
     .skill-category h3{font-size:1rem;margin:0 0 .5rem;color:var(--accent);font-weight:600}
     .project .title{font-weight:700}
     .project .meta{color:var(--muted);font-size:.9rem}
     .project figure{margin:0 0 .75rem 0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:linear-gradient(145deg,#1c2430,#0b0d10);height:160px;display:grid;place-items:center}
-    .project img{width:100%;height:100%;object-fit:cover;display:block}
+    .project img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+    .project:hover img{transform:scale(1.05)}
     .placeholder{font-size:.95rem;color:var(--muted)}
     details{border-top:1px dashed var(--border);margin-top:.6rem;padding-top:.6rem}
     details > summary{cursor:pointer;list-style:none}
@@ -100,8 +106,8 @@
     <section class="hero">
       <div class="copy fade">
         <span class="pill">Aerospace • Analytics • Optimization</span>
-        <h1>Hi, I’m <strong>Ben Halambeck</strong> — I build flight-tested experiments, optimization tools, and clean data stories.</h1>
-        <p>MSBA-BA Graduate Student with B.S. in Aerospace &amp; Ocean Engineering at Virginia Tech. Currently diving into structural dynamics, FEM automation, RAG creation, and ML models. </p>
+        <h1>Hi, I'm <strong>Ben Halambeck</strong>. I turn complex aerospace problems into working prototypes, tested code, and data driven decisions.</h1>
+        <p>Aerospace engineer with internships at True Anomaly, Collins Aerospace, and BWXT. I've led supersonic wind tunnel experiments, built FEM automation tools, and shipped multi-objective optimization frameworks. Currently pursuing MSBA at Virginia Tech.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn primary" href="#projects">See Projects</a>
           <a class="btn" href="#contact">Get in touch</a>
@@ -183,10 +189,10 @@
       projects: [
         {
           title: "Supersonic Discrete-Normal Injection",
-          img: "images/projects/supersonic.png",    // 📝 Replace supersonic.svg with your .jpg image!
+          img: "images/projects/supersonic.png",
           alt: "BOS schlieren setup and supersonic airfoil rig",
           tags: ["Aero","Experiment","BOS"],
-          blurb: "Wind-tunnel experiment at Mach 1.75 with BOS imaging; measured lift/drag response to discrete normal jet injection.",
+          blurb: "Led 4-person team through full experiment lifecycle at Mach 1.75. Designed test rig, implemented BOS imaging, and quantified lift coefficient changes from discrete jet injection.",
           details: [
             "Led design/fab of a 3D-printed airfoil, aluminum bracket, and steel base; integrated force sensors for normal/axial loads.",
             "Authored SOP and safety protocol; managed budget and procurement; coordinated faculty reviews and test sessions.",
@@ -194,29 +200,31 @@
             "Troubleshot live test issues (leaks, alignment, sensor drift) and iterated fixture stiffness to reduce noise."
           ],
           tech: ["APPL wind tunnel","BOS imaging","Arduino DAQ","MATLAB","Data cleaning"],
-          links: { demo: "#", repo: "#", paper: "#" }
+          links: { 
+            demo: "https://www.youtube.com/watch?v=oxnW5YdyIy4", 
+            paper: "docs/Experimental_Investigation_of_Discrete_Normal_Injection_for_Supersonic_Wing_Circulation_Control.pdf" 
+          }
         },
         {
           title: "FEMAP API Assistant",
-          img: "images/projects/femap-api.png",     // 📝 Replace femap-api.svg with your .jpg image!
+          img: "images/projects/femap-api.png",
           alt: "FEMAP scripting and automation",
           tags: ["Automation","VB","Python"],
-          blurb: "Code-gen + utilities that speed meshing, set creation, and post-processing over the FEMAP OLE API.",
+          blurb: "Built automation toolkit that reduces repetitive FEM tasks. Generates VB/VBA code for meshing, element sets, and post-processing workflows.",
           details: [
             "Built prompt-driven code generation with guardrails; emits VB/VBA snippets for element sets, meshing rules, and reporting.",
             "Added helpers for set rules (elem by type, property, group), model cleanup, and common post-processing plots.",
             "Designed repo structure, docs, and examples; integrated with version control and lightweight test harnesses.",
             "Goal: reduce repetitive manual operations and standardize best-practice templates across analyses."
           ],
-          tech: ["FEMAP OLE","VB/VBA","Python 3.11","VS Code","Git"],
-          links: { demo: "#", repo: "#", docs: "#" }
+          tech: ["FEMAP OLE","VB/VBA","Python 3.11","VS Code","Git"]
         },
         {
           title: "Pizza-Drone Optimization",
-          img: "images/projects/pizza-drone.jpg",   // 📝 Replace pizza-drone.svg with your .jpg image!
+          img: "images/projects/pizza-drone.jpg",
           alt: "UAV concept optimization plots",
           tags: ["Optimization","UAV"],
-          blurb: "Multi-objective study balancing mass, noise, and range for a delivery mission with FAA constraints.",
+          blurb: "Multi-objective optimization framework for delivery UAV design. Balanced mass, noise, and range constraints to identify Pareto-optimal configurations meeting FAA requirements.",
           details: [
             "Created MATLAB grid search with constraints (weight, energy, prop interplay) and checked feasible region.",
             "Modeled battery capacity, rotor diameter/count, and tilt; visualized objective heatmaps and frontier trade-offs.",
@@ -224,13 +232,44 @@
             "Delivered concise plots and recommendations for an achievable design envelope and follow-on testing."
           ],
           tech: ["MATLAB","Trade studies","Multi-objective","Data viz"],
-          links: { report: "#", code: "#" }
+          links: { 
+            report: "docs/final report.pdf", 
+            code1: "docs/matlab code 1.pdf",
+            code2: "docs/matlab code 2.pdf"
+          }
         }
       ],
       experience: [
-        { role: "Structural Dynamics Intern", org: "True Anomaly", when: "Summer 2025", details: "Vibration data pipeline, Femap/Nastran scripting, test planning." },
-        { role: "Engineering Intern", org: "Collins Aerospace", when: "Summer 2024", details: "Tooling R&D, lightweight structures, IPT planning." },
-        { role: "Engineering Intern", org: "BWXT", when: "Summer 2023", details: "FEA for naval reactor components; drawings in SolidWorks/AutoCAD." }
+        { 
+          role: "Structural Dynamics Intern", 
+          org: "True Anomaly", 
+          when: "Summer 2025",
+          bullets: [
+            "Built Python pipeline for vibration test data processing",
+            "Automated Femap/Nastran workflows for structural analysis",
+            "Collaborated with test engineers on environmental qualification planning"
+          ]
+        },
+        { 
+          role: "Engineering Intern", 
+          org: "Collins Aerospace", 
+          when: "Summer 2024",
+          bullets: [
+            "Led lightweight structures R&D for composite tooling",
+            "Coordinated cross-functional IPT reviews",
+            "Developed tooling prototypes and test procedures"
+          ]
+        },
+        { 
+          role: "Engineering Intern", 
+          org: "BWXT", 
+          when: "Summer 2023",
+          bullets: [
+            "Completed FEA for naval reactor components",
+            "Delivered technical drawings in SolidWorks/AutoCAD",
+            "Supported structural analysis documentation"
+          ]
+        }
       ]
     };
 
@@ -333,6 +372,8 @@
         if(p.links.paper) linksWrap.appendChild(makeLinkButton(p.links.paper,"Paper →"));
         if(p.links.report) linksWrap.appendChild(makeLinkButton(p.links.report,"Report →"));
         if(p.links.code) linksWrap.appendChild(makeLinkButton(p.links.code,"Code →"));
+        if(p.links.code1) linksWrap.appendChild(makeLinkButton(p.links.code1,"Code 1 →"));
+        if(p.links.code2) linksWrap.appendChild(makeLinkButton(p.links.code2,"Code 2 →"));
       }
 
       card.appendChild(figure);
@@ -349,7 +390,13 @@
     siteData.experience.forEach(e=>{
       const div=document.createElement('div');
       div.className='card item';
-      div.innerHTML = `<div><strong>${e.role}</strong> — ${e.org}</div><div class="when">${e.when}</div><div>${e.details}</div>`;
+      let bulletsHtml = '';
+      if(e.bullets && e.bullets.length){
+        bulletsHtml = '<ul style="margin:.5rem 0 0;padding-left:1.2rem">' + 
+          e.bullets.map(b => `<li style="margin:.25rem 0;color:var(--muted)">${b}</li>`).join('') + 
+          '</ul>';
+      }
+      div.innerHTML = `<div><strong>${e.role}</strong> @ ${e.org}</div><div class="when">${e.when}</div>${bulletsHtml}`;
       xp.appendChild(div);
     });
 
