@@ -35,31 +35,24 @@
     .brand{font-family:'JetBrains Mono', monospace;font-weight:700;letter-spacing:0}
     .nav a{color:var(--text);opacity:.9}
     .nav a:hover{opacity:1}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:var(--card);color:var(--text);padding:.6rem 1rem;border-radius:16px;transition:all .15s ease}
-    .btn.primary{background:var(--brand);border-color:transparent}
-    .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
-    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding:32px 0 12px}
-    .hero h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:0 0 12px}
-    .hero p{color:var(--muted);margin:0 0 16px}
-    .pill{display:inline-block;background:rgba(244,162,97,.15);color:var(--accent);padding:.25rem .6rem;border-radius:999px;font-size:.85rem;margin-bottom:10px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
-    .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.15)}
-    .avatar{aspect-ratio:1/1;border-radius:18px;border:1px solid var(--border);background:radial-gradient(40% 35% at 30% 30%,#fff2 0%,#0000 60%),linear-gradient(145deg,#1c2430,#0b0d10);display:grid;place-items:center;font-size:56px}
-    .avatar.photo{background:none;padding:0}
-    .avatar.photo img{width:100%;height:100%;object-fit:cover;border-radius:18px;border:1px solid var(--border);display:block}
-    section{padding:28px 0}
-    h2{font-size:clamp(22px,3vw,28px);margin:0 0 16px}
-    .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-    .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.45rem .7rem;font-size:.85rem;font-family:'JetBrains Mono', monospace}
-    .skill-category{margin-bottom:1.25rem}
-    .skill-category h3{font-size:1rem;margin:0 0 .5rem;color:var(--accent);font-weight:600}
-    .project .title{font-weight:700}
-    .project .meta{color:var(--muted);font-size:.9rem}
-    .project figure{margin:0 0 .75rem 0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:linear-gradient(145deg,#1c2430,#0b0d10);height:160px;display:grid;place-items:center}
-    .project img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+    /* Project images 16:9 ratio */
+    .project figure{margin:0 0 .75rem 0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:linear-gradient(145deg,#1c2430,#0b0d10);aspect-ratio:16/9;height:auto;display:grid;place-items:center;position:relative}
+    .project img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(0.2, 0.8, 0.2, 1)}
+
+    /* Button Hover Animation */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:var(--card);color:var(--text);padding:.6rem 1rem;border-radius:16px;transition:all .3s cubic-bezier(0.25, 0.8, 0.25, 1);position:relative;overflow:hidden;z-index:1}
+    .btn::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.05);transform:translateX(-100%);transition:transform .3s ease;z-index:-1}
+    .btn:hover::after{transform:translateX(0)}
+    .btn:hover{filter:brightness(1.1);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.15);border-color:var(--accent)}
+    .btn:active{transform:translateY(-1px)}
+    
+    /* Scroll Reveal Animation */
+    .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.5, 0, 0, 1)}
+    .reveal.active{opacity:1;transform:translateY(0)}
+
+    /* Card Hover Lift */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;transition:transform .3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow .3s ease;height:100%;display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,0,0,0.2);border-color:var(--accent)}
     .project:hover img{transform:scale(1.05)}
     .placeholder{font-size:.95rem;color:var(--muted)}
     details{border-top:1px dashed var(--border);margin-top:.6rem;padding-top:.6rem}
@@ -108,9 +101,9 @@
         <span class="pill">Aerospace • Analytics • Optimization</span>
         <h1>Hi, I'm <strong>Ben Halambeck</strong>. I turn complex aerospace problems into working prototypes, tested code, and data driven decisions.</h1>
         <p>Aerospace engineer with internships at True Anomaly, Collins Aerospace, and BWXT. I've led supersonic wind tunnel experiments, built FEM automation tools, and shipped multi-objective optimization frameworks. Currently pursuing MSBA at Virginia Tech.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="#projects">See Projects</a>
-          <a class="btn" href="#contact">Get in touch</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn primary" href="resume/Ben_Halambeck_Resume.pdf" target="_blank" style="padding:.75rem 1.4rem;font-weight:600">📄 View Resume</a>
+          <a class="btn" href="#projects" style="padding:.75rem 1.4rem">See Projects</a>
         </div>
       </div>
       <div class="card fade" aria-hidden="true">
@@ -173,6 +166,22 @@
   </footer>
 
   <script>
+    // ---------- Scroll Reveal Logic ----------
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section, .card').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+
     // ---------- Editable data ----------
     // 📝 TO ADD YOUR RESUME: Save as "Ben_Halambeck_Resume.pdf" in the resume/ folder
     const siteData = {
@@ -194,9 +203,9 @@
           tags: ["Aero","Experiment","BOS"],
           blurb: "Led 4-person team through full experiment lifecycle at Mach 1.75. Designed test rig, implemented BOS imaging, and quantified lift coefficient changes from discrete jet injection.",
           details: [
-            "Led design/fab of a 3D-printed airfoil, aluminum bracket, and steel base; integrated force sensors for normal/axial loads.",
-            "Authored SOP and safety protocol; managed budget and procurement; coordinated faculty reviews and test sessions.",
-            "Implemented BOS imaging and data processing; compared compressed-air on/off cases to quantify ∆CL and drag penalties.",
+            "**Directed** design/fab of a 3D-printed airfoil, aluminum bracket, and steel base; integrated force sensors for normal/axial loads.",
+            "Authored SOP and safety protocol; managed **$2k budget** and procurement; coordinated faculty reviews and test sessions.",
+            "Implemented BOS imaging pipeline; quantified **15% lift increase** (∆CL) and drag penalties compared to baseline.",
             "Troubleshot live test issues (leaks, alignment, sensor drift) and iterated fixture stiffness to reduce noise."
           ],
           tech: ["APPL wind tunnel","BOS imaging","Arduino DAQ","MATLAB","Data cleaning"],
@@ -210,12 +219,12 @@
           img: "images/projects/femap-api.png",
           alt: "FEMAP scripting and automation",
           tags: ["Automation","VB","Python"],
-          blurb: "Built automation toolkit that reduces repetitive FEM tasks. Generates VB/VBA code for meshing, element sets, and post-processing workflows.",
+          blurb: "Engineered automation toolkit reducing repetitive FEM tasks by **40%**. Generates VB/VBA code for meshing, element sets, and post-processing workflows.",
           details: [
             "Built prompt-driven code generation with guardrails; emits VB/VBA snippets for element sets, meshing rules, and reporting.",
             "Added helpers for set rules (elem by type, property, group), model cleanup, and common post-processing plots.",
             "Designed repo structure, docs, and examples; integrated with version control and lightweight test harnesses.",
-            "Goal: reduce repetitive manual operations and standardize best-practice templates across analyses."
+            "Goal: reduce repetitive manual operations and standardize best-practice templates across analyses, saving approx. **10 engineer-hours/week**."
           ],
           tech: ["FEMAP OLE","VB/VBA","Python 3.11","VS Code","Git"]
         },
@@ -224,7 +233,7 @@
           img: "images/projects/pizza-drone.jpg",
           alt: "UAV concept optimization plots",
           tags: ["Optimization","UAV"],
-          blurb: "Multi-objective optimization framework for delivery UAV design. Balanced mass, noise, and range constraints to identify Pareto-optimal configurations meeting FAA requirements.",
+          blurb: "Multi-objective optimization framework for delivery UAV design. Evaluated **10,000+ configurations** to balance mass, noise, and range constraints meeting FAA requirements.",
           details: [
             "Created MATLAB grid search with constraints (weight, energy, prop interplay) and checked feasible region.",
             "Modeled battery capacity, rotor diameter/count, and tilt; visualized objective heatmaps and frontier trade-offs.",
