@@ -1,43 +1,49 @@
 # 📸 Content Upload Guide
 
-Welcome! This guide shows you **exactly** how to add your images, resume, and documents to your portfolio website.
+This guide tracks the content status for your portfolio website.
 
-## 🚀 Quick Start (3 Steps)
+## ✅ Current Status: READY TO PUBLISH
 
-### Step 1: Add Your Resume
-1. Save your resume as: `Ben_Halambeck_Resume.pdf`
-2. Drop it in the `resume/` folder
-3. The "📄 Resume" button will automatically work!
-
-### Step 2: Add Project Images
-1. Go to the `images/projects/` folder
-2. Add these 3 images (use exact filenames):
-   - `supersonic.jpg` - Your supersonic experiment photo
-   - `femap-api.jpg` - FEMAP screenshot or diagram
-   - `pizza-drone.jpg` - Optimization plots or drone concept
-3. The images will automatically appear on your website!
-
-### Step 3: Add Optional Documents (Optional)
-1. Go to the `docs/` folder
-2. Add any technical reports or papers you want to share
-3. Update the project links in `index.html` (see below)
+**All core content has been added!** You can now publish your changes.
 
 ---
 
-## 📁 Folder Structure
+## 🚀 Quick Start (Completed)
+
+### Step 1: Add Your Resume ✅
+- [x] Saved resume as: `resume/Ben_Halambeck_Resume.pdf`
+- [x] The "📄 Resume" button is active.
+
+### Step 2: Add Project Images ✅
+- [x] `supersonic.png` (Supersonic experiment)
+- [x] `femap-api.png` (FEMAP API)
+- [x] `pizza-drone.jpg` (Pizza drone optimization)
+- **Note:** The code handles both `.jpg` and `.png` extensions automatically, but `index.html` is currently set to use the files above.
+
+### Step 3: Add Documents ✅
+- [x] `docs/` folder populated with reports and code samples.
+- [x] Project links in `index.html` updated to point to these docs.
+
+---
+
+## 📁 Current Folder Structure
 
 ```
 BHALAMBECK.github.io/
-├── index.html                    ← Main website file
+├── index.html                    ← Main website file (Updated with links)
 ├── images/
-│   ├── ben.jpeg                  ← Your headshot (already there!)
+│   ├── ben.jpeg                  ← Profile photo
 │   └── projects/
-│       ├── supersonic.jpg        ← ADD THIS
-│       ├── femap-api.jpg         ← ADD THIS
-│       └── pizza-drone.jpg       ← ADD THIS
+│       ├── supersonic.png        ✅ Added
+│       ├── femap-api.png         ✅ Added
+│       └── pizza-drone.jpg       ✅ Added
 ├── resume/
-│   └── Ben_Halambeck_Resume.pdf  ← ADD THIS
-├── docs/                         ← ADD REPORTS HERE (optional)
+│   └── Ben_Halambeck_Resume.pdf  ✅ Added
+├── docs/                         
+│   ├── Experimental_...pdf       ✅ Added
+│   ├── final report.pdf          ✅ Added
+│   ├── matlab code 1.pdf         ✅ Added
+│   └── matlab code 2.pdf         ✅ Added
 └── CONTENT_GUIDE.md              ← You are here!
 ```
 
@@ -47,124 +53,68 @@ BHALAMBECK.github.io/
 
 ### Recommended Sizes
 - **Project images**: 1200px × 800px (landscape)
-- **Profile photo**: Already done! ✅
-- **File format**: JPG or PNG
+- **File format**: JPG or PNG (Currently using a mix)
 - **File size**: Keep under 500KB each
 
-### Tips for Great Project Images
-- **Supersonic project**: Photo of your test setup, schlieren imaging, or airfoil
-- **FEMAP project**: Screenshot of the FEMAP interface with your scripts
-- **Pizza-drone**: Your optimization charts, plots, or drone CAD model
+---
+
+## 🔗 Project Links Configuration
+
+Your `index.html` is currently configured with these links:
+
+1. **Supersonic Project**
+   - Demo: YouTube Video
+   - Paper: `docs/Experimental_Investigation_of_Discrete_Normal_Injection_for_Supersonic_Wing_Circulation_Control.pdf`
+
+2. **FEMAP API**
+   - (No external links configured currently - consider adding GitHub repo if public)
+
+3. **Pizza-Drone Optimization**
+   - Report: `docs/final report.pdf`
+   - Code: `docs/matlab code 1.pdf` & `2.pdf`
 
 ---
 
-## 🔗 Adding Project Links
-
-Want to link to GitHub repos, papers, or demos? Here's how:
-
-1. Open `index.html` in your code editor
-2. Find the `siteData` object (around line 147)
-3. Update the `links` section for each project:
-
-```javascript
-projects: [
-  {
-    title: "Supersonic Discrete-Normal Injection",
-    // ... other fields ...
-    links: { 
-      demo: "#",                                    // ← Replace with video URL
-      repo: "https://github.com/yourusername/...",  // ← Replace with GitHub
-      paper: "docs/supersonic-report.pdf"           // ← Or local PDF
-    }
-  },
-  // ... more projects
-]
-```
-
-Replace `"#"` with actual URLs!
-
----
-
-## 🎯 Common Tasks
+## 🎯 Maintenance Tasks
 
 ### How to Update Your Contact Info
 1. Open `index.html`
-2. Find `siteData` (line ~147)
-3. Update:
-```javascript
-email: "benjhalambeck@gmail.com",  // ← Your email
-linkedin: "https://linkedin.com/in/benjaminhalambeck",  // ← Your LinkedIn
-```
+2. Find `siteData` (line ~187)
+3. Update `email` or `linkedin` fields.
 
 ### How to Add a New Project
 1. Open `index.html`
 2. Find the `projects` array in `siteData`
-3. Copy an existing project object and modify it:
-```javascript
-{
-  title: "Your New Project",
-  img: "images/projects/new-project.jpg",  // ← Add this image!
-  alt: "Description of image",
-  tags: ["Tag1", "Tag2"],
-  blurb: "Short description...",
-  details: [
-    "Detail point 1",
-    "Detail point 2"
-  ],
-  tech: ["Python", "MATLAB"],
-  links: { repo: "#", demo: "#" }
-}
-```
+3. Copy an existing project object and modify it.
 
 ### How to Update Skills
 1. Open `index.html`
-2. Find the `skills` array in `siteData`
-3. Add/remove/edit skills:
-```javascript
-skills: [
-  "Aerospace Design",
-  "Your New Skill Here",  // ← Add here
-  "Python"
-]
-```
+2. Find `skillCategories` in `siteData`
+3. Add/remove/edit skills in the lists.
 
 ---
 
-## ✅ Checklist
+## ✅ Final Checklist
 
-Before you commit and push:
+Before you push changes:
 
-- [ ] Added resume: `resume/Ben_Halambeck_Resume.pdf`
-- [ ] Added 3 project images to `images/projects/`
-- [ ] Checked that image filenames match exactly
-- [ ] Tested website locally (open `index.html` in browser)
-- [ ] Updated any project links from `#` to real URLs
-- [ ] (Optional) Added docs to `docs/` folder
+- [x] Added resume: `resume/Ben_Halambeck_Resume.pdf`
+- [x] Added 3 project images to `images/projects/`
+- [x] Checked that image filenames match `index.html`
+- [x] Tested website locally (open `index.html` in browser)
+- [x] Updated project links to point to `docs/`
+- [x] Added reports to `docs/` folder
 
 ---
 
 ## 🚀 Publishing Changes
 
-Once you've added your files:
+You are ready to go! Run these commands in your terminal:
 
 ```bash
 git add .
-git commit -m "Add images, resume, and content updates"
+git commit -m "Update content guide and verify assets"
 git push origin main
 ```
 
 Your site will update at: https://bhalambeck.github.io/
-
----
-
-## 💡 Pro Tips
-
-1. **Use descriptive alt text** - Good for accessibility and SEO
-2. **Optimize images** - Use tools like TinyPNG to reduce file sizes
-3. **Keep it updated** - Add new projects as you complete them
-4. **Test locally first** - Open `index.html` in your browser before pushing
-
----
-
-Need help? The code is well-commented in `index.html` - look for the `// ---------- Editable data ----------` section!
-
