@@ -198,7 +198,7 @@
         },
         {
           title: "FEMAP API Assistant",
-          img: "images/projects/femap-api.png",     // 📝 Replace femap-api.svg with your .jpg image!
+          img: "images/projects/femap-api.jfif",     // 📝 Replace femap-api.svg with your .jpg image!
           alt: "FEMAP scripting and automation",
           tags: ["Automation","VB","Python"],
           blurb: "Code-gen + utilities that speed meshing, set creation, and post-processing over the FEMAP OLE API.",
@@ -225,6 +225,38 @@
           ],
           tech: ["MATLAB","Trade studies","Multi-objective","Data viz"],
           links: { report: "#", code: "#" }
+        },
+        {
+          title: "Orbital Swarm Wargaming Sandbox",
+          img: "images/projects/war_gaming_demo.mp4",
+          alt: "Orbital swarm wargaming visualization around Earth",
+          tags: ["Orbital Mechanics","3D Visualization","Simulation"],
+          blurb: "Interactive orbital wargaming and autonomy sandbox to stand up scenarios, drop in friendly and adversary space assets, and explore how decisions drive outcomes over time.",
+          details: [
+            "Combines a simulation backend for orbital motion and time stepping with a digital engineering frontend that keeps the \"board\" legible over time.",
+            "Visualizes tracks, objectives, sensor coverage, and event timelines as the scenario propagates.",
+            "Lets users plan maneuvers, allocate limited resources like delta-v, and choose observation or engagement priorities.",
+            "Surfaces decision consequences by showing how choices affect access windows, proximity to targets, and mission success metrics.",
+            "Prototypes how operators or mission designers could rehearse low-fi and higher-fi space scenarios with a UI-driven simulation loop."
+          ],
+          tech: ["TypeScript","React","Three.js","react-three-fiber","Vite"],
+          links: { repo: "https://github.com/BHALAMBECK/war_gaming" }
+        },
+        {
+          title: "PocketCoach",
+          img: "images/projects/Pocket_Coach.jfif",
+          alt: "PocketCoach biomechanics feedback app interface",
+          tags: ["Biomechanics","Computer Vision","Mobile App"],
+          blurb: "Lightweight, end-to-end biomechanics feedback app that turns a normal phone video into actionable coaching cues.",
+          details: [
+            "Takes a recorded or uploaded movement clip (lift, jump, sprint, rehab drill) and runs pose estimation to extract keypoints.",
+            "Builds joint angles and timing metrics, then scores reps against simple, interpretable rules or baselines (e.g., knee valgus, hip hinge depth, trunk angle, symmetry, cadence).",
+            "Overlays a clean skeleton and highlights specific frames where form breaks down.",
+            "Pairs those frames with concise \"fix this next rep\" recommendations and tracks progress over time.",
+            "Makes high-quality technique analysis accessible without lab gear, packaged to feel like a coach: fast capture, clear visuals, and measurable improvement loops."
+          ],
+          tech: ["Pose Estimation","Computer Vision","Mobile Development"],
+          links: { repo: "#" }
         }
       ],
       experience: [
@@ -283,22 +315,36 @@
       const card=document.createElement('article');
       card.className='card project';
 
-      // Image / placeholder with automatic fallback to SVG
+      // Media (image or video) / placeholder with automatic fallback to SVG for images
       let figure = document.createElement('figure');
       if(p.img){
-        const img=document.createElement('img');
-        img.src=p.img;
-        img.alt=p.alt || (p.title + " image");
-        
-        // Fallback to SVG placeholder if JPG doesn't exist
-        img.onerror = function() {
-          const svgPath = p.img.replace('.jpg', '.svg').replace('.png', '.svg');
-          if(this.src !== svgPath) {
-            this.src = svgPath;
-          }
-        };
-        
-        figure.appendChild(img);
+        const isVideo = /\.(mp4|webm|mov)$/i.test(p.img);
+
+        if (isVideo) {
+          const video = document.createElement('video');
+          video.src = p.img;
+          video.controls = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.style.width = '100%';
+          video.style.height = '100%';
+          video.style.objectFit = 'cover';
+          figure.appendChild(video);
+        } else {
+          const img=document.createElement('img');
+          img.src=p.img;
+          img.alt=p.alt || (p.title + " image");
+          
+          // Fallback to SVG placeholder if JPG/PNG doesn't exist
+          img.onerror = function() {
+            const svgPath = p.img.replace('.jpg', '.svg').replace('.png', '.svg');
+            if(this.src !== svgPath) {
+              this.src = svgPath;
+            }
+          };
+          
+          figure.appendChild(img);
+        }
       }else{
         const div=document.createElement('div');
         div.className='placeholder';
